@@ -13,12 +13,7 @@ namespace ModernizrServer
         protected void Page_Load(object sender, EventArgs e)
         {
             dynamic ModernizrDynamic = Session["Modernizr"];
-            // Typical usage of testing an individual modernizr capability
-            if (ModernizrDynamic.video.h264)
-            {
-                
-            }
-
+            
             // For testing purposes only - print out all of the key/value objects 
             //  within the Modernizr object
             IDictionary<string, object> ModernizrDict = (IDictionary<string, object>)ModernizrDynamic;
