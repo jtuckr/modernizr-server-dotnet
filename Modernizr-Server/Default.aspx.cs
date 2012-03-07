@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using System.Dynamic;
-using System.Web.UI.HtmlControls;
 
 namespace ModernizrServer
 {
@@ -16,59 +15,23 @@ namespace ModernizrServer
         private string _key = "Modernizr";
         private int _MaxCookieAttempts = 3;
 
+        /// <summary>
+        /// The magic behind Modernizr-Server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session[_key] != null && !String.IsNullOrEmpty(Session[_key].ToString()))
             {
                 // The Modernizr object is in session and ready to use
-                dynamic Modernizr = Session["Modernizr"];
+                dynamic Modernizr = Session[_key];
                 
                 if (Modernizr != null)
                 {
                     // At this point you are ready to test a particular property 
                     // and do something with it
 
-
-                    // Example usage of testing an individual modernizr capability
-                    if (Modernizr.video != null)
-                    {
-                        HtmlGenericControl VideoControl = new HtmlGenericControl("video");
-                        VideoControl.Attributes.Add("autoplay", "autoplay");
-                        VideoControl.Attributes.Add("controls", "controls");
-                        if (Modernizr.video.h264)
-                        {
-                            VideoCapabilities.Text += "Your browser supports h.264. ";
-                            HtmlGenericControl VideoSource = new HtmlGenericControl("source");
-                            VideoSource.Attributes.Add("src", "assets/video/h.264/gizmo.mp4");
-                            VideoControl.Controls.Add(VideoSource);
-                        }
-                        if (Modernizr.video.webm)
-                        {
-                            VideoCapabilities.Text += "Your browser supports webm. ";
-                            HtmlGenericControl VideoSource = new HtmlGenericControl("source");
-                            VideoSource.Attributes.Add("src", "assets/video/webm/gizmo.webm");
-                            VideoSource.Attributes.Add("type", "video/webm");
-                            VideoControl.Controls.Add(VideoSource);
-                        }
-                        if (Modernizr.video.ogg)
-                        {
-                            VideoCapabilities.Text += "Your browser supports ogg. ";
-                            HtmlGenericControl VideoSource = new HtmlGenericControl("source");
-                            VideoSource.Attributes.Add("src", "assets/video/ogg/gizmo.ogv");
-                            VideoSource.Attributes.Add("type", "video/ogg");
-                            VideoControl.Controls.Add(VideoSource);
-                        }
-                        else
-                        {
-                            VideoCapabilities.Text = "Your browser does not support h.264, webm or ogg video formats";
-                        }
-                        VideoPlaceHolder.Controls.Add(VideoControl);
-                    }
-                    else
-                    {
-                        VideoCapabilities.Text = "Your browser does not support h.264, webm or ogg video formats";
-                    }
-                    // End Example 
                 }
                 else
                 {

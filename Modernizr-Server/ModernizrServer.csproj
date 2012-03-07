@@ -55,6 +55,7 @@
     <Content Include="js\modernizr.js" />
     <Content Include="ModernizrCookie.aspx" />
     <Content Include="ModernizrTestPage.aspx" />
+    <Content Include="VideoTest.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -64,6 +65,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VideoTest.aspx.cs">
+      <DependentUpon>VideoTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VideoTest.aspx.designer.cs">
+      <DependentUpon>VideoTest.aspx</DependentUpon>
+    </Compile>
     <Content Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
